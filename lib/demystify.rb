@@ -21,6 +21,14 @@ module Demystify
       count
     end
 
+    def new_line_count
+      count = 0
+      @chars.each do |char|
+        count+=1 if char == "\n"
+      end
+      count
+    end
+
 
 
   end
