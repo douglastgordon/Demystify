@@ -13,6 +13,14 @@ module Demystify
       @chars.length
     end
 
+    def spaces_count
+      count = 0
+      @chars.each do |char|
+        count+=1 if char == " "
+      end
+      count
+    end
+
 
 
   end
