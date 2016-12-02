@@ -9,7 +9,11 @@ module Demystify
       @chars = @content.split("")
     end
 
-  
+    def char_count
+      @chars.length
+    end
+
+
 
   end
 
