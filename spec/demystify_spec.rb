@@ -27,16 +27,23 @@ describe Demystify::Text do
   end
 
   describe '#non_whitespace_char_count' do
-    it "counts the new lines in a text" do
+    it "counts the non-whitespace characters in a text" do
       expect(@sample.non_whitespace_char_count).to eq(54)
     end
   end
 
   describe '#punctuation_count' do
-    it "counts the new lines in a text" do
+    it "counts the punctuation marks in a text" do
       expect(@sample.punctuation_count).to eq(8)
     end
   end
+
+  describe '#symbol_count' do
+    it "counts the symbols in a text" do
+      expect(@sample.symbol_count).to eq(1)
+    end
+  end
+
 
 
 end
