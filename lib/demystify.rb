@@ -31,6 +31,10 @@ module Demystify
       count
     end
 
+    def non_whitespace_char_count
+      char_count - (spaces_count + new_line_count)
+    end
+
     def punctuation_count
       count = 0
       @chars.each do |char|
@@ -46,5 +50,3 @@ module Demystify
 end
 
 something = Demystify::Text.new(File.join( File.dirname(__FILE__), '../sample1.txt'))
-
-p something.chars
