@@ -32,5 +32,11 @@ describe Demystify::Text do
     end
   end
 
+  describe '#punctuation_count' do
+    it "counts the new lines in a text" do
+      expect(@sample.punctuation_count).to eq(8)
+    end
+  end
+
 
 end

@@ -1,6 +1,9 @@
 module Demystify
 
-  Punctuation = ['.', ',', ':', ';', '?', '!', ]
+  #From wikipedia
+  Punctuation = ['[', ']', '(', ')', '{', '}', '⟨', '⟩', ':', ',', '،',
+                '、', '‒', '–', '—', '―', '…', '!', '.', '‹', '›', '«',
+                '»', '‐', '-', '?', "‘", "’", "“", "”", "'", "\""]
 
   class Text
 
@@ -38,7 +41,7 @@ module Demystify
     def punctuation_count
       count = 0
       @chars.each do |char|
-        count += 1 if Demystify::Puntuation.include?(char)
+        count += 1 if Punctuation.include?(char)
       end
       count
     end
