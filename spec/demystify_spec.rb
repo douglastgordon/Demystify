@@ -10,13 +10,13 @@ describe Demystify::Text do
 
   describe '#char_count' do
     it "counts the characters in a text" do
-      expect(@sample.char_count).to eq(50)
+      expect(@sample.char_count).to eq(64)
     end
   end
-  
-  describe '#char_count' do
-    it "counts the characters in a text" do
-      expect(@sample.char_count).to eq(50)
+
+  describe '#spaces_count' do
+    it "counts the spaces in a text" do
+      expect(@sample.spaces_count).to eq(6)
     end
   end
 
