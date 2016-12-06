@@ -1,5 +1,7 @@
 module Demystify
 
+  Punctuation = ['.', ',', ':', ';', '?', '!', ]
+
   class Text
 
     attr_accessor :content, :chars
@@ -16,7 +18,7 @@ module Demystify
     def spaces_count
       count = 0
       @chars.each do |char|
-        count+=1 if char == " "
+        count += 1 if char == " "
       end
       count
     end
@@ -24,7 +26,15 @@ module Demystify
     def new_line_count
       count = 0
       @chars.each do |char|
-        count+=1 if char == "\n"
+        count += 1 if char == "\n"
+      end
+      count
+    end
+
+    def punctuation_count
+      count = 0
+      @chars.each do |char|
+        count += 1 if Demystify::Puntuation.include?(char)
       end
       count
     end
