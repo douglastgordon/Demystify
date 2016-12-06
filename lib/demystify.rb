@@ -65,6 +65,22 @@ module Demystify
       count
     end
 
+    def intellectual_property_count
+      count = 0
+      @chars.each do |char|
+        count += 1 if Intellectual_property.include?(char)
+      end
+      count
+    end
+
+    def non_letter_count
+      punctuation_count + symbol_count + intellectual_property_count
+    end
+
+    def letter_count
+      char_count - (spaces_count + new_line_count + symbol_count + intellectual_property_count)
+    end
+
   end
 
 end

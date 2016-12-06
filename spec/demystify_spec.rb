@@ -44,6 +44,18 @@ describe Demystify::Text do
     end
   end
 
+  describe '#non_letter_count' do
+    it "counts the non-letters in a text" do
+      expect(@sample.non_letter_count).to eq(9)
+    end
+  end
+
+  describe '#letter_count' do
+    it "counts the letters in a text" do
+      expect(@sample.letter_count).to eq(53)
+    end
+  end
+
 
 
 end
