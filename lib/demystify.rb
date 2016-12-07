@@ -1,3 +1,4 @@
+require 'byebug'
 module Demystify
 
   #From wikipedia
@@ -79,6 +80,20 @@ module Demystify
 
     def letter_count
       char_count - (spaces_count + new_line_count + symbol_count + intellectual_property_count)
+    end
+
+    def sequence_count(sequence)
+      count = 0
+      i = 0
+
+      while i < (@chars.length - sequence.length)
+        # puts @chars[i...sequence.length].join("")
+        if @chars[i...(i+sequence.length)].join("") == sequence
+          count += 1
+        end
+        i += 1
+      end
+      count
     end
 
   end

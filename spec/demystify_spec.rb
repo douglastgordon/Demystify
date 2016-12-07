@@ -56,6 +56,13 @@ describe Demystify::Text do
     end
   end
 
+  describe '#sequence_count(sequence)' do
+    it "counts the occurrences of a particular sequence in a text" do
+      expect(@sample.sequence_count(".a")).to eq(2)
+      expect(@sample.sequence_count("l")).to eq(3)
+    end
+  end
+
 
 
 end
