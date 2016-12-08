@@ -85,7 +85,6 @@ module Demystify
     def sequence_count(sequence)
       count = 0
       i = 0
-
       while i < (@chars.length - sequence.length)
         # puts @chars[i...sequence.length].join("")
         if @chars[i...(i+sequence.length)].join("") == sequence
@@ -94,6 +93,10 @@ module Demystify
         i += 1
       end
       count
+    end
+
+    def word_count
+      @content.split(/[^[[:word:]]]+/)
     end
 
   end

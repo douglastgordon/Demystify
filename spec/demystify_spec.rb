@@ -63,6 +63,12 @@ describe Demystify::Text do
     end
   end
 
+  describe '#word_count' do
+    it "counts number of words in a text" do
+      expect(@sample.word_count).to eq(13)
+    end
+  end
+
 
 
 end
