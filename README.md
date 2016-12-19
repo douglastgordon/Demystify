@@ -58,6 +58,13 @@ text.first_words
 text.last_words
 ```
 
+Get the average length of a word or average number of words per sentence:
+```ruby
+text.average_word_length
+text.average_sentence_length
+```
+
+
 Get a hash of every word in the text of pointing to an array of all of its following or preceding words in the text:
 ```ruby
 text.forwards_probability_hash

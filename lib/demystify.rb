@@ -115,6 +115,18 @@ module Demystify
       @sentences.length
     end
 
+    def average_word_length
+      total_length = 0
+      @words.each do |word|
+        total_length += word.length
+      end
+      total_length / word_count
+    end
+
+    def average_sentence_length
+      word_count / sentence_count
+    end
+
     private
 
     def make_first_and_last_words
@@ -138,7 +150,7 @@ module Demystify
       @forwards_probability_hash = Hash.new { |h, k| h[k] = [] }
       @backwards_probability_hash = Hash.new { |h, k| h[k] = [] }
       @sentences.each do |sentence|
-        sentence_array = sentence.split(" ")
+        sentence_array = sentence.split(/[^[[:word:]]]+/)
         sentence_array.each_with_index do |word, i|
           unless i == sentence_array.length - 1
             @forwards_probability_hash[word] << sentence_array[i+1]
