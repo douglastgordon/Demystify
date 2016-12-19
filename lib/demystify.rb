@@ -20,13 +20,22 @@ module Demystify
 
   class Text
 
-    attr_accessor :content, :chars, :words
+    attr_accessor :content,
+                  :chars,
+                  :words,
+                  :sentences,
+                  :forwards_probability_hash,
+                  :backwards_probability_hash,
+                  :first_words,
+                  :last_words
 
     def initialize(file)
       @content = open(file).read
       @chars = @content.split("")
       @words = @content.split(/[^[[:word:]]]+/)
-      @sentences = make_sentences
+      make_sentences
+      make_probability_hashes
+      make_first_and_last_words
     end
 
     def char_count
@@ -106,29 +115,39 @@ module Demystify
       @sentences.length
     end
 
-    def first_words_of_sentences
-      first_words = []
-      @sentences.each do |sentence|
-        first_words << sentence.first
-      end
-      first_words
-    end
-
-    def last_words_of_sentences
-      last_words = []
-      @sentences.each do |sentence|
-        last_words << sentence.last
-      end
-      last_words
-    end
-
     private
+
+    def make_first_and_last_words
+      @first_words = []
+      @last_words = []
+      @sentences.each do |sentence|
+        split_sentence = sentence.split(" ")
+        @first_words << split_sentence.first
+        @last_words << split_sentence.last
+      end
+    end
 
     def make_sentences
       sentence_regex = /((?<=[a-z0-9)][.?!])|(?<=[a-z0-9][.?!]"))\s+(?="?[A-Z])/
       sentences = @content.split(sentence_regex)
       sentences.select!{|sentence| sentence.length > 1}
-      sentences.map{|sentence| sentence.chomp}
+      @sentences = sentences.map{|sentence| sentence.chomp}
+    end
+
+    def make_probability_hashes
+      @forwards_probability_hash = Hash.new { |h, k| h[k] = [] }
+      @backwards_probability_hash = Hash.new { |h, k| h[k] = [] }
+      @sentences.each do |sentence|
+        sentence_array = sentence.split(" ")
+        sentence_array.each_with_index do |word, i|
+          unless i == sentence_array.length - 1
+            @forwards_probability_hash[word] << sentence_array[i+1]
+          end
+          unless i == 0
+            @backwards_probability_hash[word] << sentence_array[i-1]
+          end
+        end
+      end
     end
 
   end
