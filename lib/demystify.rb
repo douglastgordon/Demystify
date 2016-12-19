@@ -26,9 +26,7 @@ module Demystify
       @content = open(file).read
       @chars = @content.split("")
       @words = @content.split(/[^[[:word:]]]+/)
-
       @sentences = make_sentences
-
     end
 
     def char_count
@@ -136,5 +134,3 @@ module Demystify
   end
 
 end
-
-something = Demystify::Text.new(File.join( File.dirname(__FILE__), '../sample1.txt'))
