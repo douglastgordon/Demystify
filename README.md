@@ -57,3 +57,9 @@ Get the first word or last word of every sentence in an array:
 text.first_words
 text.last_words
 ```
+
+Get a hash of every word in the text of pointing to an array of all of its following or preceding words in the text:
+```ruby
+text.forwards_probability_hash
+text.backwards_probability_hash
+```
