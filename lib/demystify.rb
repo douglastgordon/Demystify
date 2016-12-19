@@ -108,6 +108,22 @@ module Demystify
       @sentences.length
     end
 
+    def first_words_of_sentences
+      first_words = []
+      @sentences.each do |sentence|
+        first_words << sentence.first
+      end
+      first_words
+    end
+
+    def last_words_of_sentences
+      last_words = []
+      @sentences.each do |sentence|
+        last_words << sentence.last
+      end
+      last_words
+    end
+
     private
 
     def make_sentences
