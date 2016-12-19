@@ -70,6 +70,12 @@ describe Demystify::Text do
     end
   end
 
+  describe '#sentence_count' do
+    it "counts number of sentences in a text" do
+      expect(@sample2.sentence_count).to eq(5)
+    end
+  end
+
 
 
 end

@@ -1,4 +1,5 @@
 require 'byebug'
+
 module Demystify
 
   #From wikipedia
@@ -25,6 +26,9 @@ module Demystify
       @content = open(file).read
       @chars = @content.split("")
       @words = @content.split(/[^[[:word:]]]+/)
+
+      @sentences = make_sentences
+
     end
 
     def char_count
@@ -98,6 +102,19 @@ module Demystify
 
     def word_count
       @words.count
+    end
+
+    def sentence_count
+      @sentences.length
+    end
+
+    private
+
+    def make_sentences
+      sentence_regex = /((?<=[a-z0-9)][.?!])|(?<=[a-z0-9][.?!]"))\s+(?="?[A-Z])/
+      sentences = @content.split(sentence_regex)
+      sentences.select!{|sentence| sentence.length > 1}
+      sentences.map{|sentence| sentence.chomp}
     end
 
   end
