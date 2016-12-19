@@ -32,7 +32,7 @@ module Demystify
     def initialize(file)
       @content = open(file).read
       @chars = @content.split("")
-      @words = @content.split(/[^[[:word:]]]+/)
+      @words = @content.split(/[^[[:word:]]|'|-]+/)
       make_sentences
       make_probability_hashes
       make_first_and_last_words
@@ -98,7 +98,6 @@ module Demystify
       count = 0
       i = 0
       while i < (@chars.length - sequence.length)
-        # puts @chars[i...sequence.length].join("")
         if @chars[i...(i+sequence.length)].join("") == sequence
           count += 1
         end
@@ -150,7 +149,7 @@ module Demystify
       @forwards_probability_hash = Hash.new { |h, k| h[k] = [] }
       @backwards_probability_hash = Hash.new { |h, k| h[k] = [] }
       @sentences.each do |sentence|
-        sentence_array = sentence.split(/[^[[:word:]]]+/)
+        sentence_array = sentence.split(/[^[[:word:]]|'|-]+[,|;|:|.|?|!]?/)
         sentence_array.each_with_index do |word, i|
           unless i == sentence_array.length - 1
             @forwards_probability_hash[word] << sentence_array[i+1]

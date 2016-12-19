@@ -66,13 +66,13 @@ describe Demystify::Text do
 
   describe '#word_count' do
     it "counts number of words in a text" do
-      expect(@sample2.word_count).to eq(124)
+      expect(@sample2.word_count).to eq(133)
     end
   end
 
   describe '#sentence_count' do
     it "counts number of sentences in a text" do
-      expect(@sample2.sentence_count).to eq(5)
+      expect(@sample2.sentence_count).to eq(7)
     end
   end
 
