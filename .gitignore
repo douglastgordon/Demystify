@@ -1,2 +1,5 @@
 Gemfile.lock
 .byebug_history
+Rakefile
+bin/
+.demystify-0.0.1.gem
