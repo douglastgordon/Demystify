@@ -19,11 +19,12 @@ module Demystify
 
   class Text
 
-    attr_accessor :content, :chars
+    attr_accessor :content, :chars, :words
 
     def initialize(file)
       @content = open(file).read
       @chars = @content.split("")
+      @words = @content.split(/[^[[:word:]]]+/)
     end
 
     def char_count
@@ -96,7 +97,7 @@ module Demystify
     end
 
     def word_count
-      @content.split(/[^[[:word:]]]+/)
+      @words.count
     end
 
   end
